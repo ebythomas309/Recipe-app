@@ -1,0 +1,43 @@
+<div class="container">
+    <div style="height: 100vh;" class="row align-items-center">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <h1 class="text-center">Register</h1>
+            <p class="text-center">Explore 100+ recipes in your hand...</p>
+            <div class="shadow border rounded p-5 mt-5">
+                <div class="mb-3 text-center">
+                    <h3><i class="fa-solid fa-utensils fa-flip me-2 fs-2"></i>Dish-Delight</h3>
+                </div>
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="mb-3 text-center">
+                        <input name="username" formControlName="username" type="text" placeholder="Enter Your Username" class="form-control">
+                    </div>
+                    @if (registerForm.get('username')?.errors && registerForm.get("username")?.touched) {<div class="text-danger fw-bolder me-">*Invalid Username</div>}
+                    <div class="mb-3 text-center">
+                        <input name="email" formControlName="email" type="email"  placeholder="Enter Your Email" class="form-control">
+                    </div>
+                     @if (registerForm.get('email')?.errors && registerForm.get("email")?.touched) {<div class="text-danger fw-bolder me-">*Invalid Email</div>}
+                    <div class="mb-3 text-center">
+                        <input name="password" formControlName="password" type="password" placeholder="Enter Your Password" class="form-control">
+                    </div>
+                     @if (registerForm.get('password')?.errors && registerForm.get("password")?.touched) {<div class="text-danger fw-bolder me-">*Invalid Password</div>}
+                     <br>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4 p-3">
+            <h1>Create Account</h1>
+            <h5>What will you get?</h5>
+            <ul class="mt-5">
+                <li>Different Recipes</li>
+                <li>Easy way to make Recipe</li>
+                <li>Save your Favourite Recipe</li>
+                <li>Download your Recipe</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        @if (isSideBarOpen) {
+        <div class="col-lg-2 bg-success">
+            <app-sidebar></app-sidebar>
+        </div>
+        }
+        <div class="col">
+            <h1>Welcome Admin</h1>
+            <!-- navbar -->
+            <div class="d-flex justify-content-between p-3 rounded text-light bg-warning">
+                <h1><button (click)="menuBtnClicked()" class="btn"><i
+                            class="fa-solid fa-bars fa-2x text-light"></i></button>Admin Dashboard</h1>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user text-light"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button (click)="logout()" class="btn fa-bolder"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- metric -->
+            <div class="d-flex justify-content-evenly mt-2">
+                <div class="d-flex align-items-center p-3 rounded bg-info text-light">
+                    <i class="fa-solid fa-users mx-3 fa-3x"></i>
+                    <div>
+                        <h3>Users</h3>
+                        <h2>{{userCount}}</h2>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center p-3 rounded bg-danger text-light">
+                    <i class="fa-solid fa-bowl-food mx-3 fa-3x"></i>
+                    <div>
+                        <h3>Recipes</h3>
+                        <h2>{{recipeCount}}</h2>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center p-3 rounded bg-primary text-light">
+                    <i class="fa-solid fa-download mx-3 fa-3x"></i>
+                    <div>
+                        <h3>Downloads</h3>
+                        <h2>{{downloadCount}}</h2>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center p-3 rounded bg-secondary text-light">
+                    <i class="fa-solid fa-message mx-3 fa-3x"></i>
+                    <div>
+                        <h2>Notification</h2>
+                        <h6>You have <a routerLink="/admin/request-list" class="text-danger">{{requestCount}}</a> new
+                            requests</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!--chart & calender-->
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <!--chart-->
+                    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" style="width: 100%; height: 400px; display: block;" ></highcharts-chart>
+
+                </div>
+                <div class="col-lg-4">
+                    <!-- calender -->
+                    <mat-card class="demo-inline-calendar-card">
+                        <mat-calendar (selectedChange)="selected = $event"></mat-calendar>
+                    </mat-card>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

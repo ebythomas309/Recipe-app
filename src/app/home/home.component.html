@@ -1,0 +1,84 @@
+<app-header></app-header>
+
+<div class="container w-100">
+    <div class="row bg-success p-5 w-100">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4 mt-5 text-light fw-bolder">
+            <h1>Most easiest way to make Your favorite Dish</h1>
+            <p>Explore 100+ recipes in your hand...</p>
+            <h2 style="font-size: 40px;" class="text-warning fw-bolder">Eat</h2>
+            <h3 style="font-size: 35px;" class="text-warning fw-bolder">Cook</h3>
+            <h5 style="font-size: 30px;" class="text-warning fw-bolder">Repeat</h5>
+            <a routerLink="/recipes" class="btn btn-success text-light bg-success fw-bolder">Explore our Recipes</a>
+        </div>
+        <div class="col-lg-6">
+            <img style="width: 500px;" class="food-img"
+                src="https://th.bing.com/th/id/R.a9caf544e96691b39893bb48c08c65bb?rik=auKFdVTUmlL0cA&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-plate-of-food--600.png&ehk=tmQ5jwDlt1f5vC78EN4ZPrzdKs0Cnr7kO0dDVXnwsr0%3d&risl=&pid=ImgRaw&r=0"
+                alt="">
+        </div>
+    </div>
+    <!-- popular recipes -->
+    <div class="my-3 p-5">
+        <h1>Popular Recipes Of The Week</h1>
+        <div class="d-flex justify-content-between">
+            <p>Our Most Popular Recipe Of The Week</p>
+            <a routerLink="/recipes">view all</a>
+        </div>
+        <div class="row my-3">
+            @for (recipe of homeRecipes; track $index) {
+                <div class="col-lg-4 d-flex">
+                <div class="p-3">
+                    <img width="70%" [src]="recipe.image" alt="">
+                    <div class="card-body">
+                        <h4>{{recipe.name}}</h4>
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div class="col-lg-8">
+
+            </div>
+        </div>
+    </div>
+    <!-- banner -->
+    <div style="height: 400px;background-repeat: no-repeat;background-size: cover;background-image: url(https://t4.ftcdn.net/jpg/04/76/57/27/360_F_476572792_zMwqHpmGal1fzh0tDJ3onkLo88IjgNbL.jpg);"
+        class="row align-items-center my-5">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <div class="bg-light rounded p-3 w-75">
+                <h5 class="text-warning">50+ Recipes that quick and fast</h5>
+                <p class="text-dark mt-3">Find the perfect food ideas to start your day...</p>
+            </div>
+        </div>
+
+    </div>
+    <!--download-->
+    <div style="height: 500px;" class="my-3 row text-light align-items-center bg-success rounded p-5">
+        <div class="col-lg-6 text-center">
+            <h1>Download App</h1>
+            <h5>Download the App from App store or <br>Google Play for better experience</h5>
+            <div class="d-flex justify-content-center align-items-center">
+                <img width="200px" src="https://ae01.alicdn.com/kf/S2636f784a5004820942cb648a4ffc308J/272x80.png" alt="">
+                <img width="300px" src="https://www.freepnglogos.com/uploads/app-store-logo-png/download-on-the-app-store-logo-png-23.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--client testimonials-->
+    <div class="text-center my-5">
+        <h1>Client Testimonials</h1>
+        <marquee>
+            <div class="row my-5">
+               @for (item of allTestimonys; track $index) {
+                 <div class="col-lg-4">
+                    <div class="rounded border w-100 p-2 shadow">
+                        <h5>{{item.name}}</h5>
+                        <p style="white-space:normal;width: 100%;text-align: justify;">{{item.message}}</p>
+                    </div>
+                </div>
+               }
+            </div>
+        </marquee>
+    </div>
+
+</div>

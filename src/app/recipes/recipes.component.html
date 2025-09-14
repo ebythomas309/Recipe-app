@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="container">
+                <h5>Filter</h5>
+                <button class="btn mt-5" (click)="getAllRecipes()">All</button><br>
+                <!--cuisine type-->
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                   Cuisine Type
+                </button><br>
+                <div class="collapse" id="collapseExample">
+                    <button class="btn" (click)="filterRecipe('cuisine','Italian')" >Italian</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Asian')" >Asian</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','American')" >American</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Mexican')" >Mexican</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Indian')" >Indian</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Pakistani')" >Pakistani</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Japanese')" >Japanese</button>
+                    <button class="btn" (click)="filterRecipe('cuisine','Thai')" >Thai</button>
+                </div>
+                <!--mealType-->
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample">
+                   Meal Type
+                </button>
+                  <div class="collapse" id="collapseExample1">
+                    <button class="btn" (click)="filterRecipe('mealType','Dinner')" >Dinner</button>
+                    <button class="btn" (click)="filterRecipe('mealType','Lunch')" >Lunch</button>
+                    <button class="btn" (click)="filterRecipe('mealType','Dessert')" >Dessert</button>
+                    <button class="btn" (click)="filterRecipe('mealType','Appetizer')" >Appetizer</button>
+                    <button class="btn" (click)="filterRecipe('mealType','Breakfast')" >Breakfast</button>
+                    <button class="btn" (click)="filterRecipe('mealType','Beverage')" >Beverage</button>
+                    <button class="btn" (click)="filterRecipe('mealType','salad')" >salad</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>All Recipes</h1>
+                <input [(ngModel)]="searchKey" type="text" class="form-control w-50" placeholder="search your recipes">
+            </div>
+            <div class="row my-3">
+                @for (recipe of allRecipes| search:searchKey |paginate: { itemsPerPage: 6, currentPage: p }; track $index) {
+                    <div class="col-lg-4">
+                    <div class="p-3">
+                        <img (click)="viewRecipe(recipe._id)" width="100%" [src]="recipe.image" alt="">
+                        <div class="card-body">
+                            <h4>{{recipe.name}}</h4>
+                            <p class="fw-bolder">Cuisine: <span class="text-danger">{{recipe.cuisine}}</span></p>
+                            <p class="fw-bolder">mealType: <span class="text-danger">{{recipe.mealType}}</span></p>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if ((allRecipes|search:searchKey).length==0) {
+                    <div class="text-danger fw-bolder">No Recipes Found...</div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+         <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div style="height: 100vh;" class="container d-flex justify-content-center align-items-center flex-column">
+    <h1>Login</h1>
+    <p>Explore 100+ recipes in your hand...</p>
+    <div style="width: 400px;" class="shadow border rounded p-5 mt-5">
+        <div class="mb-3 text-center">
+            <h3><i class="fa-solid fa-utensils fa-flip me-2 fs-2"></i>Dish-Delight</h3>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-3 text-center">
+                <input type="email" name="email" formControlName="email" placeholder="Enter Your Email" class="form-control">
+            </div>
+            @if (loginForm.get('email')?.errors && loginForm.get("email")?.touched) {<div class="text-danger fw-bolder me-">*Invalid Email</div>}
+            <div class="mb-3 text-center">
+                <input type="password"  name="password" formControlName="password"  placeholder="Enter Your Password" class="form-control">
+            </div>
+             @if (loginForm.get('password')?.errors && loginForm.get("password")?.touched) {<div class="text-danger fw-bolder me-">*Invalid Password</div>}
+              <br>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

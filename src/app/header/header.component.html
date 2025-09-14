@@ -1,0 +1,44 @@
+<nav class="navbar container navbar-expand-lg bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" routerLink=""><i
+        class="fa-solid fa-utensils fa-flip me-2 fs-2"></i>Dish-Delight</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/recipes">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-light bg-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-user-large"></i>
+
+          @if (isLoggedIn) {
+          <span class="text-light fw-bolder ms-1 me-1">Hi {{loginUsername}}</span>
+          }
+
+        </button>
+        <ul class="dropdown-menu">
+
+          @if (isLoggedIn) {
+          <li><a class="dropdown-item" routerLink="/saved-recipes">Saved-Recipes</a></li>
+          <li><button class="dropdown-item" (click)="logOut()" >Logout</button></li>
+
+          }@else {
+          <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+          <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

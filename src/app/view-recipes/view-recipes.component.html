@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="container my-5">
+    {{recipe.name}}
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <a routerLink="/recipies">Back To Recipe</a>
+            <img class="img-fluid my-5" [src]="recipe.image" alt="no image" >
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" (click)="saveRecipe()">Saved-Recipies</button>
+                <button class="btn btn-success" (click)="downloadRecipe()" >Download-Recipies</button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1>{{recipe.name}}</h1>
+            <div class="d-flex justify-content-between my-5">
+                <p class="fw-bolder">cuisine:{{recipe.cuisine}}</p>
+                <p class="fw-bolder">Servings:{{recipe.Servings}}</p>
+                <p class="fw-bolder">Mode of Cooking:{{recipe.difficulty}}</p>
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <div class="d-flex flex-column align-items-center">
+                    <img height="70px" src="https://static.vecteezy.com/system/resources/previews/019/873/849/original/clock-icon-transparent-free-icon-free-png.png" alt="">
+                    <p class="fw-bolder">Prepration Time</p>
+                    <h6><span class="text-danger">{{recipe.prepTimeMinutes}}</span>Miniutes</h6>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                     <img height="70px" src="https://png.pngtree.com/png-clipart/20220911/original/pngtree-chef-hat-and-cooking-logo-png-image_8538758.png" alt="">
+                    <p class="fw-bolder">Cooking Time</p>
+                    <h6><span class="text-danger">{{recipe.cookTimeMinutes}}</span>Miniutes</h6>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <img height="70px" src="https://cdn1.iconfinder.com/data/icons/fitness-sport/512/calories-512.png" alt="">
+                    <p class="fw-bolder">Calories per unit</p>
+                    <h6><span class="text-danger">{{recipe.caloriesPerServing}}</span></h6>
+                </div>
+            </div>
+            <div class="my-5">
+                <h1>Ingredients Needed</h1>
+                <ol>
+
+                    @for (item of recipe.ingredients; track $index) {
+                        <li>{{item}}</li>
+                    }
+
+                </ol>
+            </div>
+            <div class="my-5">
+                <h1>Cooking Instruction</h1>
+                <ol>
+
+                    @for (item of recipe.instructions; track $index) {
+                        <li>{{item}}</li>
+                    }
+
+
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-5">
+        <h1>Related Items</h1>
+        <div class="row mt-2">
+
+            @for (item of allRelatedRecipe; track $index) {
+                 <div class="col-lg-3">
+                <div class="p-3" routerLink="/recipe/{{item._id}}/view">
+                    <img width="100%" [src]="item.image" alt="no-img">
+                    <div class="card-body">
+                        <p>{{item.name}}</p>
+                    </div>
+                </div>
+            </div>
+            }
+            
+           
+        </div>
+    </div>
+</div>

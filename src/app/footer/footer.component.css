@@ -1,0 +1,41 @@
+:host {
+  display: block;            /* important for background to cover full width */
+  background-color: #28a745; /* green */
+  color: white;               /* text color */
+  padding: 20px 0;            /* spacing inside footer */
+}
+i.fa-twitter {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+i.fa-instagram {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+
+i.fa-facebook {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+
+i.fa-github {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+
+i.fa-whatsapp {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+
+i.fa-phone {
+  color: white;       /* icon color */
+  font-size: 1.5rem;  /* icon size */
+  margin-right: 10px; /* spacing */
+}
+

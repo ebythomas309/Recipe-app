@@ -1,0 +1,9 @@
+.food-img{
+    transition: 2s;
+}
+
+.food-img:hover{
+    scale: 1.2;
+    transition: ease-in-out 1s;
+    rotate: 180deg;
+}

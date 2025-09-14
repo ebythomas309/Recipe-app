@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 bg-success">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-10">
+            <h1 class="text-center text-primary fw-bolder">All-Recipe List</h1>
+            <div class="d-flex justify-content-between my-3">
+                <a routerLink="/admin/recipe/add" class="btn btn-primary">+Add More Recipe</a>
+                <input [(ngModel)]="searchRecipe" type="text" placeholder="search by Name" class="form-control w-25">
+            </div>
+            <table class="table shadow my-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Cuisine</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (recipe of allRecipes | search:searchRecipe; track $index; let i=$index) {
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{recipe.name}}</td>
+                        <td><img [src]="recipe.image" width="100px" height="100px" alt=""></td>
+                        <td>{{recipe.cuisine}}</td>
+                        <td>
+                            <div class="d-flex">
+                              <a class="btn" (click)="editRecipe(recipe)"><i class="fa-regular fa-pen-to-square"></i></a>
+                                <button (click)="removeRecipe(recipe._id)" class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                     @if ((allRecipes | search:searchRecipe).length==0) {
+                        <div class="text-danger fw-bolder">
+                            Recipe Not Found...
+                        </div>
+                     }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
